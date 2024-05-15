@@ -31,10 +31,13 @@ public class BookingMapper {
         Booking booking = new Booking();
         booking.setAccept(form.getAccept());
         booking.setStatus(form.getStatus());
-        booking.setTotal_price(form.getTotal_price());
-        booking.setBook_address(form.getBook_address());
+        booking.setTotalPrice(form.getTotalPrice());
+        booking.setBookAddress(form.getBookAddress());
         booking.setMessage(form.getMessage());
-        booking.setCity_name(form.getCity_name());
+        booking.setCityName(form.getCityName());
+        booking.setCheckin(form.getCheckin());
+        booking.setCheckout(form.getCheckout());
+        booking.setCancelTime(form.getCancelTime());
         return booking;
     }
 
@@ -43,13 +46,15 @@ public class BookingMapper {
         dto.setId(booking.getId());
         dto.setAccept(booking.getAccept());
         dto.setStatus(booking.getStatus());
-        dto.setTotal_price(booking.getTotal_price());
-        dto.setBook_address(booking.getBook_address());
+        dto.setTotalPrice(booking.getTotalPrice());
+        dto.setBookAddress(booking.getBookAddress());
         dto.setMessage(booking.getMessage());
-        dto.setCity_name(booking.getCity_name());
+        dto.setCityName(booking.getCityName());
         dto.setCheckin(booking.getCheckin());
         dto.setCheckout(booking.getCheckout());
-        dto.setCancel_time(booking.getCancel_time());
+        dto.setCancelTime(booking.getCancelTime());
+        dto.setCreatedAt(booking.getCreatedAt());
+        dto.setUpdatedAt(booking.getUpdatedAt());
         return dto;
     }
 

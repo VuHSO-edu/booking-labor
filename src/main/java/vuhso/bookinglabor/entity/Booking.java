@@ -5,7 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -42,11 +45,17 @@ public class Booking {
     private Long id;
     private int accept;
     private int status;
-    private double total_price;
-    private String book_address;
+    private double totalPrice;
+    private String bookAddress;
     private String message;
-    private String city_name;
+    private String cityName;
     private Date checkin;
     private Date checkout;
-    private LocalDateTime cancel_time;
+    private LocalDateTime cancelTime;
+
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -37,11 +38,13 @@ public class BookingDto {
     private Long id;
     private int accept;
     private int status;
-    private double total_price;
-    private String book_address;
+    private double totalPrice;
+    private String bookAddress;
     private String message;
-    private String city_name;
+    private String cityName;
     private Date checkin;
     private Date checkout;
-    private LocalDateTime cancel_time;
+    private LocalDateTime cancelTime;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }
