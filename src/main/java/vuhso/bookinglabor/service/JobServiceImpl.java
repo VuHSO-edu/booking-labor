@@ -3,9 +3,13 @@ package vuhso.bookinglabor.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import vuhso.bookinglabor.dto.JobDto;
+import vuhso.bookinglabor.entity.Job;
 import vuhso.bookinglabor.form.JobCreateForm;
 import vuhso.bookinglabor.mapper.JobMapper;
 import vuhso.bookinglabor.repository.JobRepository;
+
+import java.util.LinkedList;
+import java.util.List;
 
 //AUTHOR:VuHSO
 //                           _
@@ -38,5 +42,16 @@ public class JobServiceImpl implements JobService {
         var job = JobMapper.map(form);
         var saveJob = jobRepository.save(job);
         return JobMapper.map(saveJob);
+    }
+
+    @Override
+    public List<JobDto> findAll() {
+        var dtos = new LinkedList<JobDto>();
+
+        for (Job job : jobRepository.findAll()) {
+            dtos.add(JobMapper.map(job));
+        }
+
+        return dtos;
     }
 }
