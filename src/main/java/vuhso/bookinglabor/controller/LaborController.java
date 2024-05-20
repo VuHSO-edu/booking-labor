@@ -1,12 +1,16 @@
 package vuhso.bookinglabor.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import vuhso.bookinglabor.dto.LaborDto;
+import vuhso.bookinglabor.entity.Labor;
 import vuhso.bookinglabor.form.LaborCreateForm;
 import vuhso.bookinglabor.service.LaborSevice;
+
+import java.util.List;
 
 //AUTHOR:VuHSO
 //                           _
@@ -36,5 +40,10 @@ public class LaborController {
     @PostMapping("vuhso/bookinglabor/labors")
     public LaborDto createLabor(@RequestBody LaborCreateForm form) {
         return laborService.createLabor(form);
+    }
+
+    @GetMapping("vuhso/bookinglabor/labors")
+    public List<LaborDto> findAll() {
+        return laborService.findAll();
     }
 }
