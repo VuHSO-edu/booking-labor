@@ -3,8 +3,12 @@ package vuhso.bookinglabor.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import vuhso.bookinglabor.dto.CityDto;
+import vuhso.bookinglabor.entity.City;
 import vuhso.bookinglabor.form.CityCreateForm;
 import vuhso.bookinglabor.mapper.CityMapper;
+
+import java.util.LinkedList;
+import java.util.List;
 
 //AUTHOR:VuHSO
 //                           _
@@ -37,5 +41,16 @@ public class CityServiceImpl implements CityService {
         var city = CityMapper.map(form);
         var saveCity = cityRepository.save(city);
         return CityMapper.map(saveCity);
+    }
+
+    @Override
+    public List<CityDto> findAll() {
+        var dtos = new LinkedList<CityDto>();
+
+        for (City city : cityRepository.findAll()) {
+            dtos.add(CityMapper.map(city));
+        }
+
+        return dtos;
     }
 }

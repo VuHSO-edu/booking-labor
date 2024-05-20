@@ -1,12 +1,15 @@
 package vuhso.bookinglabor.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import vuhso.bookinglabor.dto.CityDto;
 import vuhso.bookinglabor.form.CityCreateForm;
 import vuhso.bookinglabor.service.CityService;
+
+import java.util.List;
 
 //AUTHOR:VuHSO
 //                           _
@@ -37,5 +40,9 @@ public class CityController {
     @PostMapping("vuhso/bookinglabor/cities")
     public CityDto createCity(@RequestBody CityCreateForm form) {
         return cityService.createCity(form);
+    }
+    @GetMapping("vuhso/bookinglabor/cities")
+    public List<CityDto> findAll() {
+        return cityService.findAll();
     }
 }
