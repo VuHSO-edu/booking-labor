@@ -3,6 +3,8 @@ package vuhso.bookinglabor.service;
 import vuhso.bookinglabor.dto.BookingDto;
 import vuhso.bookinglabor.form.BookingCreateForm;
 
+import java.util.List;
+
 //AUTHOR:VuHSO
 //                           _
 //                        _ooOoo_
@@ -26,4 +28,6 @@ import vuhso.bookinglabor.form.BookingCreateForm;
 //=========== Phật phù hộ không bao giờ BUG ===================
 public interface BookingSevice {
     BookingDto createBooking(BookingCreateForm form);
+
+    List<BookingDto> findAll();
 }
