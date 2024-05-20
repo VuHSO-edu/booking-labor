@@ -3,6 +3,8 @@ package vuhso.bookinglabor.service;
 import vuhso.bookinglabor.dto.CustomerDto;
 import vuhso.bookinglabor.form.CustomerCreateForm;
 
+import java.util.List;
+
 //AUTHOR:VuHSO
 //                           _
 //                        _ooOoo_
@@ -26,4 +28,6 @@ import vuhso.bookinglabor.form.CustomerCreateForm;
 //=========== Phật phù hộ không bao giờ BUG ===================
 public interface CustomerService {
     CustomerDto createCustomer(CustomerCreateForm form);
+
+    List<CustomerDto> findAll();
 }

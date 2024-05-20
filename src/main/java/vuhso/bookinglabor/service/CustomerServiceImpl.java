@@ -3,9 +3,13 @@ package vuhso.bookinglabor.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import vuhso.bookinglabor.dto.CustomerDto;
+import vuhso.bookinglabor.entity.Customer;
 import vuhso.bookinglabor.form.CustomerCreateForm;
 import vuhso.bookinglabor.mapper.CustomerMapper;
 import vuhso.bookinglabor.repository.CustomerRepository;
+
+import java.util.LinkedList;
+import java.util.List;
 
 //AUTHOR:VuHSO
 //                           _
@@ -38,5 +42,15 @@ public class CustomerServiceImpl implements CustomerService {
         var customer = CustomerMapper.map(form);
         var saveCustomer = customerRepository.save(customer);
         return CustomerMapper.map(saveCustomer);
+    }
+
+    @Override
+    public List<CustomerDto> findAll() {
+        var dtos = new LinkedList<CustomerDto>();
+
+        for (Customer customer : customerRepository.findAll()) {
+            dtos.add(CustomerMapper.map(customer));
+        }
+        return dtos;
     }
 }
