@@ -31,6 +31,5 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CityCreateForm {
-    private Long id;
     private String cityName;
 }

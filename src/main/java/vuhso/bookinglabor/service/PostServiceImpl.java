@@ -5,9 +5,13 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vuhso.bookinglabor.dto.PostDto;
+import vuhso.bookinglabor.entity.Post;
 import vuhso.bookinglabor.form.PostCreateForm;
 import vuhso.bookinglabor.mapper.PostMapper;
 import vuhso.bookinglabor.repository.PostRepository;
+
+import java.util.LinkedList;
+import java.util.List;
 
 //AUTHOR:VuHSO
 //                           _
@@ -48,5 +52,15 @@ public class PostServiceImpl implements PostService {
         var post = PostMapper.map(form); //Map form to entity
         var savePost = postRepository.save(post); //Save to database
         return PostMapper.map(savePost); //Map entity to dto
+    }
+
+    @Override
+    public List<PostDto> findAll() {
+        var dtos = new LinkedList<PostDto>();
+        for (Post post : postRepository.findAll()) {
+            var dto = PostMapper.map(post);
+            dtos.add(dto);
+        }
+        return dtos;
     }
 }

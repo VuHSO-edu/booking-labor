@@ -28,23 +28,23 @@ import vuhso.bookinglabor.form.CustomerCreateForm;
 public class CustomerMapper {
 
     public static Customer map(CustomerCreateForm form) {
-        Customer customer = new Customer();
-        customer.setFull_name(form.getFull_name());
-        customer.setIdent_code(form.getIdent_code());
+        var customer = new Customer();
+        customer.setFullName(form.getFullName());
+        customer.setIdentCode(form.getIdentCode());
         customer.setAddress(form.getAddress());
-        customer.setPhone_number(form.getPhone_number());
-        customer.setBirthday_customer(form.getBirthday_customer());
+        customer.setPhoneNumber(form.getPhoneNumber());
+        customer.setBirthdayCustomer(form.getBirthdayCustomer());
         return customer;
     }
 
     public static CustomerDto map(Customer customer) {
-        CustomerDto dto = new CustomerDto();
+        var dto = new CustomerDto();
         dto.setId(customer.getId());
-        dto.setFull_name(customer.getFull_name());
-        dto.setIdent_code(customer.getIdent_code());
+        dto.setFullName(customer.getFullName());
+        dto.setIdentCode(customer.getIdentCode());
         dto.setAddress(customer.getAddress());
-        dto.setPhone_number(customer.getPhone_number());
-        dto.setBirthday_customer(customer.getBirthday_customer());
+        dto.setPhoneNumber(customer.getPhoneNumber());
+        dto.setBirthdayCustomer(customer.getBirthdayCustomer());
         return dto;
     }
 

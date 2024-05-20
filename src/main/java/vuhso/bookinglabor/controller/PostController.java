@@ -23,18 +23,22 @@ package vuhso.bookinglabor.controller;
 //=========== Phật phù hộ không bao giờ BUG ===================
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vuhso.bookinglabor.dto.PostDto;
 import vuhso.bookinglabor.form.PostCreateForm;
 import vuhso.bookinglabor.service.PostService;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
 public class PostController {
     private PostService postService;
+
+    @GetMapping("vuhso/bookinglabor/posts")
+    public List<PostDto> findAll() {
+        return postService.findAll();
+    }
 
     @PostMapping("vuhso/bookinglabor/posts")
     public PostDto createPost(@RequestBody PostCreateForm form) {

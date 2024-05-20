@@ -33,10 +33,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerCreateForm {
-    private Long id;
-    private String full_name;
-    private String ident_code;
+    private String fullName;
+    private String identCode;
     private String address;
-    private String phone_number;
-    private Date birthday_customer;
+    private String phoneNumber;
+    private Date birthdayCustomer;
 }

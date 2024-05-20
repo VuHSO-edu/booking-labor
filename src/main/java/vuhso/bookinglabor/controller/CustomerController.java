@@ -2,6 +2,7 @@ package vuhso.bookinglabor.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import vuhso.bookinglabor.dto.CustomerDto;
 import vuhso.bookinglabor.form.CustomerCreateForm;
@@ -34,7 +35,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping("vuhso/bookinglabor/customers")
-    public CustomerDto createCustomer(CustomerCreateForm form) {
+    public CustomerDto createCustomer(@RequestBody CustomerCreateForm form) {
         return customerService.createCustomer(form);
     }
 }
