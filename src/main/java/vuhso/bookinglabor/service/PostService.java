@@ -9,4 +9,6 @@ import java.util.List;
 public interface PostService {
     PostDto createPost(PostCreateForm form);
     List<PostDto> findAll();
+
+    PostDto findById(Long id);
 }

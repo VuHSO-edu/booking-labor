@@ -45,4 +45,9 @@ public class PostController {
         return postService.createPost(form);
     }
 
+    @GetMapping("vuhso/bookinglabor/posts/{id}")
+    public PostDto findById(@PathVariable("id") Long id) {
+        return postService.findById(id);
+    }
+
 }
