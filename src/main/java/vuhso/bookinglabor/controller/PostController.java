@@ -23,6 +23,7 @@ package vuhso.bookinglabor.controller;
 //=========== Phật phù hộ không bao giờ BUG ===================
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import vuhso.bookinglabor.dto.PostDto;
 import vuhso.bookinglabor.form.PostCreateForm;
@@ -40,6 +41,7 @@ public class PostController {
         return postService.findAll();
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("vuhso/bookinglabor/posts")
     public PostDto createPost(@RequestBody PostCreateForm form) {
         return postService.createPost(form);
