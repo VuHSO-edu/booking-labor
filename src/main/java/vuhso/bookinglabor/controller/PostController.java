@@ -23,10 +23,13 @@ package vuhso.bookinglabor.controller;
 //=========== Phật phù hộ không bao giờ BUG ===================
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import vuhso.bookinglabor.dto.PostDto;
 import vuhso.bookinglabor.form.PostCreateForm;
+import vuhso.bookinglabor.form.PostUpdateForm;
 import vuhso.bookinglabor.service.PostService;
 
 import java.util.List;
@@ -37,8 +40,8 @@ public class PostController {
     private PostService postService;
 
     @GetMapping("vuhso/bookinglabor/posts")
-    public List<PostDto> findAll() {
-        return postService.findAll();
+    public Page<PostDto> findAll(Pageable pageable) {
+        return postService.findAll(pageable);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -50,6 +53,16 @@ public class PostController {
     @GetMapping("vuhso/bookinglabor/posts/{id}")
     public PostDto findById(@PathVariable("id") Long id) {
         return postService.findById(id);
+    }
+
+    @PutMapping("vuhso/bookinglabor/posts/{id}")
+    public PostDto updatePost(@RequestBody PostUpdateForm form, @PathVariable("id") Long id) {
+        return postService.update(form, id);
+    }
+
+    @DeleteMapping("vuhso/bookinglabor/posts/{id}")
+    public void deletePost(@PathVariable("id") Long id) {
+        postService.deleteById(id);
     }
 
 }

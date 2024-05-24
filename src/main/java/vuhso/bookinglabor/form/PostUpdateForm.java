@@ -1,4 +1,5 @@
 package vuhso.bookinglabor.form;
+
 //AUTHOR:VuHSO
 //                           _
 //                        _ooOoo_
@@ -20,5 +21,21 @@ package vuhso.bookinglabor.form;
 //===========`-.`___`-.__\ \___  /__.-'_.'_.-'================
 //                        `=--=-'
 //=========== Phật phù hộ không bao giờ BUG ===================
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PostUpdateForm {
+    private String title;
+    private String content;
+    private String image;
+    private String author;
+    private String minDate;
+    private String maxDate;
 }

@@ -3,10 +3,13 @@ package vuhso.bookinglabor.service;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import vuhso.bookinglabor.dto.PostDto;
 import vuhso.bookinglabor.entity.Post;
 import vuhso.bookinglabor.form.PostCreateForm;
+import vuhso.bookinglabor.form.PostUpdateForm;
 import vuhso.bookinglabor.mapper.PostMapper;
 import vuhso.bookinglabor.repository.PostRepository;
 
@@ -55,18 +58,27 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostDto> findAll() {
-        var dtos = new LinkedList<PostDto>();
-        for (Post post : postRepository.findAll()) {
-            var dto = PostMapper.map(post);
-            dtos.add(dto);
-        }
-        return dtos;
+    public Page<PostDto> findAll(Pageable pageable) {
+        return postRepository.findAll(pageable)
+                .map(PostMapper::map);
     }
 
     @Override
     public PostDto findById(Long id) {
         var post = postRepository.findById(id).get();
         return PostMapper.map(post);
+    }
+
+    @Override
+    public PostDto update(PostUpdateForm form, Long id) {
+        var post = postRepository.findById(id).get();
+        PostMapper.map(form, post);
+        var savePost = postRepository.save(post);
+        return PostMapper.map(savePost);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        postRepository.deleteById(id);
     }
 }

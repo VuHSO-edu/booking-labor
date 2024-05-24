@@ -26,6 +26,7 @@ package vuhso.bookinglabor.mapper;
 import vuhso.bookinglabor.dto.PostDto;
 import vuhso.bookinglabor.entity.Post;
 import vuhso.bookinglabor.form.PostCreateForm;
+import vuhso.bookinglabor.form.PostUpdateForm;
 
 public class PostMapper {
 
@@ -55,4 +56,12 @@ public class PostMapper {
     }
 
 
+    public static void map(PostUpdateForm form, Post post) {
+        post.setTitle(form.getTitle());
+        post.setContent(form.getContent());
+        post.setImage(form.getImage());
+        post.setAuthor(form.getAuthor());
+        post.setMinDate(form.getMinDate());
+        post.setMaxDate(form.getMaxDate());
+    }
 }
